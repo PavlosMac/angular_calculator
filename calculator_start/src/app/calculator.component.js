@@ -12,7 +12,9 @@ var core_1 = require('@angular/core');
 var CalculatorComponent = (function () {
     function CalculatorComponent() {
         this.runningTotal = 0;
+        this.previousTotal = 0;
         this.newTotal = true;
+        this.currentOperator = null;
     }
     CalculatorComponent.prototype.numberButtonClick = function (event) {
         //I will be able to keep concatenating numbers to the first
@@ -21,10 +23,20 @@ var CalculatorComponent = (function () {
             this.newTotal = false;
         }
         this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+        console.log(this.runningTotal);
     };
     CalculatorComponent.prototype.operativeButtonClick = function (event) {
-        if (event.target.value == 'AC') {
-            this.runningTotal = 0;
+        var operator = event.target.innerHTML;
+        console.log(event.target.innerHTML);
+        switch (operator) {
+            case 'AC':
+                this.runningTotal = 0;
+                this.newTotal = true;
+                break;
+            case '.':
+                this.runningTotal = this.runningTotal + '' + '.';
+                console.log(this.runningTotal);
+                break;
         }
     };
     CalculatorComponent = __decorate([

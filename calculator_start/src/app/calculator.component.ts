@@ -13,7 +13,9 @@ export class CalculatorComponent  {
 
 
   private runningTotal = 0;
+  private previousTotal = 0;
   private newTotal = true;
+  private currentOperator = null;
 
 
   numberButtonClick(event) {
@@ -23,15 +25,32 @@ export class CalculatorComponent  {
             this.newTotal = false;
           }
 
-    this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
 
+    this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+    console.log(this.runningTotal)
   }
+
+
 
   operativeButtonClick(event) {
 
-    if(event.target.value == 'AC'){
-      this.runningTotal = 0;
-    }
+    let operator = event.target.innerHTML;
+
+    console.log(event.target.innerHTML)
+
+      switch(operator){
+        case 'AC':
+        this.runningTotal = 0;
+        this.newTotal = true;
+        break;
+        case '.':
+        this.runningTotal = this.runningTotal + '' + '.';
+        console.log(this.runningTotal)
+        break;
+
+
+  }
+
   }
 
 
