@@ -12,7 +12,21 @@ var core_1 = require('@angular/core');
 var CalculatorComponent = (function () {
     function CalculatorComponent() {
         this.runningTotal = 0;
+        this.newTotal = true;
     }
+    CalculatorComponent.prototype.numberButtonClick = function (event) {
+        //I will be able to keep concatenating numbers to the first
+        if (this.runningTotal == 0 || this.newTotal) {
+            this.runningTotal = '';
+            this.newTotal = false;
+        }
+        this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+    };
+    CalculatorComponent.prototype.operativeButtonClick = function (event) {
+        if (event.target.value == 'AC') {
+            this.runningTotal = 0;
+        }
+    };
     CalculatorComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

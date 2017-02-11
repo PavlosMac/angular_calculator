@@ -12,7 +12,27 @@ export class CalculatorComponent  {
 
 
 
-  runningTotal = 0;
+  private runningTotal = 0;
+  private newTotal = true;
+
+
+  numberButtonClick(event) {
+//I will be able to keep concatenating numbers to the first
+    if(this.runningTotal == 0 || this.newTotal) {
+            this.runningTotal = '';
+            this.newTotal = false;
+          }
+
+    this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+
+  }
+
+  operativeButtonClick(event) {
+
+    if(event.target.value == 'AC'){
+      this.runningTotal = 0;
+    }
+  }
 
 
 }
