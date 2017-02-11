@@ -1,0 +1,32 @@
+h1 {
+  font-size: 1.8em;
+  color: #743;
+  margin-bottom: 0;
+}
+
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+button {
+
+  width: 90px;
+  height: 30px;
+  margin-top: 20px;
+  font-family: Arial;
+  background-color: #00ffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+button:hover {
+  background-color:  #00cccc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}

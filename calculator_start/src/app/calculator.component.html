@@ -1,0 +1,25 @@
+  <h1>Calculator</h1>
+    <div>
+      <input [(ngModel)]="runningTotal" placeholder="running total">
+      </div>
+      <div >
+      <button (click)="operativeButtonClick($event)" value="AC">AC</button>
+      <button (click)="operativeButtonClick($event)" value="%">%</button>
+      <button (click)="operativeButtonClick($event)" value="/">/</button>
+      <button (click)="operativeButtonClick($event)" value="*">*</button><br>
+      <button (click)="numberButtonClick($event)" value="7">7</button>
+      <button (click)="numberButtonClick($event)" value="8">8</button>
+      <button (click)="numberButtonClick($event)" value="9">9</button>
+      <button (click)="operativeButtonClick($event)" value="-">-</button><br>
+      <button (click)="numberButtonClick($event)" value="4">4</button>
+      <button (click)="numberButtonClick($event)" value="5">5</button>
+      <button (click)="numberButtonClick($event)" value="6">6</button>
+      <button (click)="operativeButtonClick($event)" value="+">+</button><br>
+      <button (click)="numberButtonClick($event)" value="1">1</button>
+      <button (click)="numberButtonClick($event)" value="2">2</button>
+      <button (click)="numberButtonClick($event)" value="3">3</button>
+      <button (click)="numberButtonClick($event)" value="0">0</button><br>
+      <button (click)="operativeButtonClick($event)" value=".">.</button>
+      <button (click)="operativeButtonClick($event)" value="=">=</button>
+
+            </div>
