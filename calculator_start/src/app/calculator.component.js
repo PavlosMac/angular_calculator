@@ -17,13 +17,11 @@ var CalculatorComponent = (function () {
         this.currentOperator = null;
     }
     CalculatorComponent.prototype.numberButtonClick = function (event) {
-        //I will be able to keep concatenating numbers to the first
         if (this.runningTotal == 0 || this.newTotal) {
             this.runningTotal = '';
             this.newTotal = false;
         }
         this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
-        console.log(this.runningTotal);
     };
     CalculatorComponent.prototype.operativeButtonClick = function (event) {
         var operator = event.target.innerHTML;
@@ -51,6 +49,11 @@ var CalculatorComponent = (function () {
                 this.runningTotal = 0;
                 this.currentOperator = operator;
                 break;
+            case '%':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
             case 'AC':
                 this.runningTotal = 0;
                 this.newTotal = true;
@@ -73,6 +76,9 @@ var CalculatorComponent = (function () {
                 break;
             case '/':
                 this.runningTotal = this.previousTotal / this.runningTotal;
+                break;
+            case '%':
+                this.runningTotal = (this.previousTotal / this.runningTotal) * 100;
                 break;
         }
     };

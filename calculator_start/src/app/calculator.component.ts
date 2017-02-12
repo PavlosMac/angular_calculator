@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
-  selector: 'my-calculator',
-  templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.css']
+    moduleId: module.id,
+    selector: 'my-calculator',
+    templateUrl: './calculator.component.html',
+    styleUrls: ['./calculator.component.css']
 
 })
-export class CalculatorComponent  {
+export class CalculatorComponent {
 
 
     private runningTotal = 0;
@@ -18,15 +18,13 @@ export class CalculatorComponent  {
 
 
     numberButtonClick(event) {
-  //I will be able to keep concatenating numbers to the first
-      if(this.runningTotal == 0 || this.newTotal) {
-              this.runningTotal = '';
-              this.newTotal = false;
-            }
 
+        if (this.runningTotal == 0 || this.newTotal) {
+            this.runningTotal = '';
+            this.newTotal = false;
+        }
 
-      this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
-      console.log(this.runningTotal)
+        this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
     }
 
 
@@ -35,61 +33,70 @@ export class CalculatorComponent  {
 
     operativeButtonClick(event) {
 
-      let operator = event.target.innerHTML;
+        let operator = event.target.innerHTML;
 
-      switch(operator){
-        case '=':
-        this.makeCalculation();
-        break;
-        case '+':
-        this.previousTotal = this.runningTotal;
-        this.runningTotal = 0;
-        this.currentOperator = operator;
-        break;
-        case '-':
-        this.previousTotal = this.runningTotal;
-        this.runningTotal = 0;
-        this.currentOperator = operator;
-        break;
-        case '*':
-        this.previousTotal = this.runningTotal;
-        this.runningTotal = 0;
-        this.currentOperator = operator;
-        break;
-        case '/':
-        this.previousTotal = this.runningTotal;
-        this.runningTotal = 0;
-        this.currentOperator = operator;
-        break;
-        case 'AC':
-        this.runningTotal = 0;
-        this.newTotal = true;
-        break;
-        case '.':
-        this.runningTotal += ('' + '.');
-        break;
-      }
+        switch (operator) {
+            case '=':
+                this.makeCalculation();
+                break;
+            case '+':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '-':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '*':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '/':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '%':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case 'AC':
+                this.runningTotal = 0;
+                this.newTotal = true;
+                break;
+            case '.':
+                this.runningTotal += ('' + '.');
+                break;
+        }
 
 
-  }
-
-  makeCalculation(){
-    switch(this.currentOperator){
-      case '+':
-      this.runningTotal += this.previousTotal;
-      break;
-      case '-':
-      this.runningTotal -= this.previousTotal;
-      break;
-      case '*':
-      this.runningTotal *= this.previousTotal;
-      break;
-      case '/':
-      this.runningTotal = this.previousTotal / this.runningTotal;
-      break;
-  
     }
-  }
+
+
+
+    makeCalculation() {
+        switch (this.currentOperator) {
+            case '+':
+                this.runningTotal += this.previousTotal;
+                break;
+            case '-':
+                this.runningTotal -= this.previousTotal;
+                break;
+            case '*':
+                this.runningTotal *= this.previousTotal;
+                break;
+            case '/':
+                this.runningTotal = this.previousTotal / this.runningTotal;
+                break;
+            case '%':
+                this.runningTotal = (this.previousTotal / this.runningTotal) * 100;
+                break;
+        }
+    }
 
 
 }
