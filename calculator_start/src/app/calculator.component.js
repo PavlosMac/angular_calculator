@@ -29,13 +29,27 @@ var CalculatorComponent = (function () {
         var operator = event.target.innerHTML;
         console.log(event.target.innerHTML);
         switch (operator) {
+            case '+':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '=':
+                this.makeCalculation();
+                break;
             case 'AC':
                 this.runningTotal = 0;
                 this.newTotal = true;
                 break;
             case '.':
-                this.runningTotal = this.runningTotal + '' + '.';
-                console.log(this.runningTotal);
+                this.runningTotal += ('' + '.');
+                break;
+        }
+    };
+    CalculatorComponent.prototype.makeCalculation = function () {
+        switch (this.currentOperator) {
+            case '+':
+                this.runningTotal += this.previousTotal;
                 break;
         }
     };
