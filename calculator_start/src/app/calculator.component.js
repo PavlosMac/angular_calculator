@@ -27,15 +27,29 @@ var CalculatorComponent = (function () {
     };
     CalculatorComponent.prototype.operativeButtonClick = function (event) {
         var operator = event.target.innerHTML;
-        console.log(event.target.innerHTML);
         switch (operator) {
+            case '=':
+                this.makeCalculation();
+                break;
             case '+':
                 this.previousTotal = this.runningTotal;
                 this.runningTotal = 0;
                 this.currentOperator = operator;
                 break;
-            case '=':
-                this.makeCalculation();
+            case '-':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '*':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
+                break;
+            case '/':
+                this.previousTotal = this.runningTotal;
+                this.runningTotal = 0;
+                this.currentOperator = operator;
                 break;
             case 'AC':
                 this.runningTotal = 0;
@@ -50,6 +64,15 @@ var CalculatorComponent = (function () {
         switch (this.currentOperator) {
             case '+':
                 this.runningTotal += this.previousTotal;
+                break;
+            case '-':
+                this.runningTotal -= this.previousTotal;
+                break;
+            case '*':
+                this.runningTotal *= this.previousTotal;
+                break;
+            case '/':
+                this.runningTotal = this.previousTotal / this.runningTotal;
                 break;
         }
     };

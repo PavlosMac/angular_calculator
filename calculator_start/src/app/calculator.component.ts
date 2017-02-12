@@ -11,10 +11,6 @@ import { NgModule } from '@angular/core';
 export class CalculatorComponent  {
 
 
-
-
-
-
     private runningTotal = 0;
     private previousTotal = 0;
     private newTotal = true;
@@ -35,32 +31,45 @@ export class CalculatorComponent  {
 
 
 
+
+
     operativeButtonClick(event) {
 
       let operator = event.target.innerHTML;
 
-      console.log(event.target.innerHTML)
+      switch(operator){
+        case '=':
+        this.makeCalculation();
+        break;
+        case '+':
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
+        break;
+        case '-':
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
+        break;
+        case '*':
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
+        break;
+        case '/':
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
+        break;
+        case 'AC':
+        this.runningTotal = 0;
+        this.newTotal = true;
+        break;
+        case '.':
+        this.runningTotal += ('' + '.');
+        break;
+      }
 
-        switch(operator){
-          case '+':
-          this.previousTotal = this.runningTotal;
-          this.runningTotal = 0;
-          this.currentOperator = operator;
-          break;
-          case '=':
-          this.makeCalculation();
-          break;
-          case 'AC':
-          this.runningTotal = 0;
-          this.newTotal = true;
-          break;
-          case '.':
-          this.runningTotal += ('' + '.');
-          break;
-
-
-
-    }
 
   }
 
@@ -69,6 +78,16 @@ export class CalculatorComponent  {
       case '+':
       this.runningTotal += this.previousTotal;
       break;
+      case '-':
+      this.runningTotal -= this.previousTotal;
+      break;
+      case '*':
+      this.runningTotal *= this.previousTotal;
+      break;
+      case '/':
+      this.runningTotal = this.previousTotal / this.runningTotal;
+      break;
+  
     }
   }
 
