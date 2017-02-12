@@ -69,7 +69,7 @@ var CalculatorComponent = (function () {
                 this.runningTotal += this.previousTotal;
                 break;
             case '-':
-                this.runningTotal -= this.previousTotal;
+                this.runningTotal = this.previousTotal - this.runningTotal;
                 break;
             case '*':
                 this.runningTotal *= this.previousTotal;
@@ -78,7 +78,7 @@ var CalculatorComponent = (function () {
                 this.runningTotal = this.previousTotal / this.runningTotal;
                 break;
             case '%':
-                this.runningTotal = (this.previousTotal / this.runningTotal) * 100;
+                this.runningTotal = ((this.previousTotal / this.runningTotal) * 100);
                 break;
         }
     };

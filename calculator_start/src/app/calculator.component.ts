@@ -84,7 +84,7 @@ export class CalculatorComponent {
                 this.runningTotal += this.previousTotal;
                 break;
             case '-':
-                this.runningTotal -= this.previousTotal;
+                this.runningTotal = this.previousTotal - this.runningTotal;
                 break;
             case '*':
                 this.runningTotal *= this.previousTotal;
@@ -93,7 +93,7 @@ export class CalculatorComponent {
                 this.runningTotal = this.previousTotal / this.runningTotal;
                 break;
             case '%':
-                this.runningTotal = (this.previousTotal / this.runningTotal) * 100;
+                this.runningTotal = ((this.previousTotal / this.runningTotal) * 100);
                 break;
         }
     }
