@@ -70,8 +70,8 @@ var CalculatorComponent = (function () {
                 this.runningTotal = this.previousTotal / this.runningTotal;
                 break;
             case '%':
-                this.runningTotal = ((this.previousTotal / this.runningTotal) * 100);
-                console.log(this.runningTotal);
+                this.runningTotal = ((this.previousTotal * this.runningTotal) / 100).toFixed(2);
+                console.log(this.previousTotal);
                 break;
         }
     };
