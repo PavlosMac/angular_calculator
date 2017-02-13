@@ -23,36 +23,32 @@ var CalculatorComponent = (function () {
         }
         this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
     };
+    CalculatorComponent.prototype.changeSettings = function (operator) {
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
+    };
     CalculatorComponent.prototype.operativeButtonClick = function (event) {
         var operator = event.target.innerHTML;
+        console.log(this.currentOperator);
         switch (operator) {
             case '=':
                 this.makeCalculation();
                 break;
             case '+':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case '-':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case '*':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case '/':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case '%':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case 'AC':
                 this.runningTotal = 0;

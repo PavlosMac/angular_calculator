@@ -28,41 +28,38 @@ export class CalculatorComponent {
     }
 
 
-
+    changeSettings(operator) {
+      this.previousTotal = this.runningTotal;
+         this.runningTotal = 0;
+         this.currentOperator = operator;
+    }
 
 
     operativeButtonClick(event) {
 
         let operator = event.target.innerHTML;
 
+
+           console.log(this.currentOperator);
+
         switch (operator) {
             case '=':
                 this.makeCalculation();
                 break;
             case '+':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case '-':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+              this.changeSettings(operator);
                 break;
             case '*':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+              this.changeSettings(operator);
                 break;
             case '/':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+              this.changeSettings(operator);
                 break;
             case '%':
-                this.previousTotal = this.runningTotal;
-                this.runningTotal = 0;
-                this.currentOperator = operator;
+                this.changeSettings(operator);
                 break;
             case 'AC':
                 this.runningTotal = 0;
