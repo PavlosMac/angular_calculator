@@ -18,27 +18,20 @@ export class CalculatorComponent {
 
     numberButtonClick(event) {
 
-
-    this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
-      console.log(this.runningTotal)
-
+        this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
     }
 
 
     changeSettings(operator) {
-      this.previousTotal = this.runningTotal;
-      this.runningTotal = 0;
-      this.currentOperator = operator;
-      console.log(this.currentOperator);
+        this.previousTotal = this.runningTotal;
+        this.runningTotal = 0;
+        this.currentOperator = operator;
     }
 
 
     operativeButtonClick(event) {
 
         let operator = event.target.innerHTML;
-
-
-
 
         switch (operator) {
             case '=':
@@ -48,13 +41,13 @@ export class CalculatorComponent {
                 this.changeSettings(operator);
                 break;
             case '-':
-              this.changeSettings(operator);
+                this.changeSettings(operator);
                 break;
             case '*':
-              this.changeSettings(operator);
+                this.changeSettings(operator);
                 break;
             case '/':
-              this.changeSettings(operator);
+                this.changeSettings(operator);
                 break;
             case '%':
                 this.changeSettings(operator);
@@ -67,8 +60,6 @@ export class CalculatorComponent {
                 this.runningTotal += ('' + '.');
                 break;
         }
-
-
     }
 
 
@@ -89,7 +80,6 @@ export class CalculatorComponent {
                 break;
             case '%':
                 this.runningTotal = ((this.previousTotal * this.runningTotal) / 100).toFixed(2);
-                console.log(this.previousTotal)
                 break;
         }
     }
