@@ -13,24 +13,20 @@ var CalculatorComponent = (function () {
     function CalculatorComponent() {
         this.runningTotal = 0;
         this.previousTotal = 0;
-        this.newTotal = true;
         this.currentOperator = null;
     }
     CalculatorComponent.prototype.numberButtonClick = function (event) {
-        if (this.runningTotal == 0 || this.newTotal) {
-            this.runningTotal = '';
-            this.newTotal = false;
-        }
         this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+        console.log(this.runningTotal);
     };
     CalculatorComponent.prototype.changeSettings = function (operator) {
         this.previousTotal = this.runningTotal;
         this.runningTotal = 0;
         this.currentOperator = operator;
+        console.log(this.currentOperator);
     };
     CalculatorComponent.prototype.operativeButtonClick = function (event) {
         var operator = event.target.innerHTML;
-        console.log(this.currentOperator);
         switch (operator) {
             case '=':
                 this.makeCalculation();
@@ -75,6 +71,7 @@ var CalculatorComponent = (function () {
                 break;
             case '%':
                 this.runningTotal = ((this.previousTotal / this.runningTotal) * 100);
+                console.log(this.runningTotal);
                 break;
         }
     };
