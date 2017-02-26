@@ -18,7 +18,7 @@ export class CalculatorComponent {
 
     numberButtonClick(event) {
 
-        this.runningTotal = parseFloat('' + this.runningTotal + event.target.value);
+        this.runningTotal = Number('' + this.runningTotal + event.target.value);
     }
 
 
